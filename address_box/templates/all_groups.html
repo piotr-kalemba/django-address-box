@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}All groups{% endblock %}
+
+{% block date %} {{ now }} {% endblock %}
+
+{% block content %}
+<ul>
+    {% for group in groups %}
+    <li> <a href="{% url 'show-group' id=group.id %}">{{ group }}</a>
+        <a href="{% url 'del-group' id=group.id %}">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add-group' %}">Add new group</a>
+{% endblock %}

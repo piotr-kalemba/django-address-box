@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Show Person{% endblock %}
+
+{% block date %} {{ now }} {% endblock %}
+
+{% block content %}
+<ul>
+    <li>First name: {{ person.first_name }}</li>
+    <li>Last name: {{ person.last_name }}</li>
+    <li>Description: {{ person.description }}</li>
+</ul>
+Emails:
+<ol>
+    {% for email in emails %}
+    <li>{{ email }}</li>
+    {% endfor %}
+</ol>
+<a href="{% url 'add-email' id=person.id %}">Add email</a><br>
+Groups:
+<ol>
+    {% for group in groups %}
+    <li>{{ group }}</li>
+    {% endfor %}
+</ol>
+<a href="{% url 'add-group-to-person' id=person.id %}">Add group</a>
+{% endblock %}

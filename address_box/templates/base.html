@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <h3>Current date: {% block date %}{{ now }}{% endblock %}</h3>
+</head>
+<body>
+{% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Show Person{% endblock %}
+
+{% block date %} {{ now }} {% endblock %}
+
+{% block content %}
+Group name: {{ group }}<br>
+Members:
+<ul>
+{% for member in members %}
+<li>{{ member }}<a href="{% url 'del-from-group' g_id=group.id m_id=member.id %}">Delete from the group</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

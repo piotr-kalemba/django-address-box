@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}All persons{% endblock %}
+
+{% block date %} {{ now }} {% endblock %}
+
+{% block content %}
+<ul>
+    {% for person in persons %}
+    <li>{{ person.first_name }} {{ person.last_name }} <a href="{% url 'show-person' id=person.id %}">Details</a>
+        <a href="{% url 'delete-person' id=person.id %}">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add-person' %}">Add new person</a>
+{% endblock %}

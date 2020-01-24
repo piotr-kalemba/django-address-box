@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Add groups to a member{% endblock %}
+
+{% block date %} {{ now }} {% endblock %}
+
+{% block content %}
+<form action="#" method="POST">
+    {% csrf_token %}
+    <label>
+  <select multiple name="groups">
+      {% for group in groups %}
+    <option value="{{ group.id }}">{{ group }}</option>
+      {% endfor %}
+  </select>
+    </label>
+    <input type="submit" value="SAVE">
+</form>
+{% endblock %}

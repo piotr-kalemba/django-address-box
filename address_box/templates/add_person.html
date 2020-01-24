@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Person{% endblock %}
+
+{% block date %} {{ now }} {% endblock %}
+
+{% block content %}
+<form action="#" method="POST">
+    {% csrf_token %}
+        {{ form }}
+    <input type="submit" value="OK">
+</form>
+{% endblock %}
