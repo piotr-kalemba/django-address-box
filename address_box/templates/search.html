@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Search contact{% endblock %}
+
+{% block date %} {{ now }} {% endblock %}
+
+{% block content %}
+<form action="#" method="POST">
+    {% csrf_token %}
+        {{ form }}
+    <input type="submit" value="Search">
+</form>
+Search results:
+<ol>
+{% for result in results %}
+    <li><a href="{% url 'show-person' id=result.id %}">{{ result }}</a></li>
+    {% empty %}
+    Nothing to show!
+{% endfor %}
+</ol>
+{% endblock %}

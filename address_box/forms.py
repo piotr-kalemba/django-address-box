@@ -15,3 +15,8 @@ class EmailForm(forms.Form):
     type = forms.ChoiceField(label='Choose email type', choices=TYPES)
 
 
+class SearchForm(forms.Form):
+
+    phrase = forms.CharField(label='Enter search phrase', max_length=128)
+
+

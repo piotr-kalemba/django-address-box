@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Person, Email, Group
 from django.views import View
-from .forms import PersonForm, EmailForm
+from .forms import PersonForm, EmailForm, SearchForm
 
 # Create your views here.
 
@@ -121,3 +121,20 @@ class AddGroupToPerson(View):
         person.group_set.set(groups)
         person.save()
         return redirect('show-person', id=person.id)
+
+
+class Search(View):
+
+    def get(self, request):
+        f = SearchForm()
+        return render(request, 'search.html', {'form': f, 'results': []})
+
+    def post(self, request):
+        f = SearchForm(request.POST)
+        if f.is_valid():
+            phrase = f.cleaned_data['phrase']
+            persons_by_first = set(Person.objects.filter(first_name__icontains=phrase))
+            persons_by_last = set(Person.objects.filter(last_name__icontains=phrase))
+            search_results = persons_by_first | persons_by_last
+
+        return render(request, 'search.html', {'form': f, 'results': search_results})

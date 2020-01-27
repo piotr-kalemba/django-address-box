@@ -14,4 +14,5 @@ urlpatterns = [
     path('del_from_group/<int:g_id>/<int:m_id>/', views.DelMemberFromGroup.as_view(), name='del-from-group'),
     path('add_email/<int:id>/', views.AddEmail.as_view(), name='add-email'),
     path('add_group_to_person/<int:id>/', views.AddGroupToPerson.as_view(), name='add-group-to-person'),
+    path('search', views.Search.as_view(), name='search'),
 ]
